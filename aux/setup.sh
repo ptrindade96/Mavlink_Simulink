@@ -17,3 +17,5 @@ if [ ! -f ~/.bashrc.bak ]; then
     echo -e 'export GAZEBO_MASTER_URI=http://localhost:$gazebo_port'  >> ".bashrc"
     echo -e 'alias 3dTiger="/opt/TurboVNC/bin/vncserver -kill :$id_net; /opt/TurboVNC/bin/vncserver -vgl -wm mate-session :$id_net"'  >> ".bashrc"
 fi
+
+source .bashrc
