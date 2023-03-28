@@ -48,7 +48,7 @@ function spawn_model() {
 function configure_simulation() {
 	px4_conf_file_dir=$1
 
-	sed -i 's/simulator_tcp_port=$((4560+px4_instance))/simulator_tcp_port=$(($px4_start_port+px4_instance))/g' ${px4_conf_file_dir}/px4-rc.simulator
+	sed -i 's/simulator_tcp_port=$((4560+px4_instance))/simulator_tcp_port=$(('"$px4_start_port"'+px4_instance))/g' ${px4_conf_file_dir}/px4-rc.simulator
 	sed -i 's/param set-default COM_RC_IN_MODE 1/param set-default COM_RC_IN_MODE 1\nparam set-default COM_RCL_EXCEPT 4/g' ${px4_conf_file_dir}/rcS
 	sed 's/udp_offboard_port_local=$((14580+px4_instance))/udp_offboard_port_local=$(($px4_start_port+20+px4_instance))/g' ${px4_conf_file_dir}/px4-rc.mavlink > ${px4_conf_file_dir}/px4-rc.mavlink.template
 	sed -i 's/udp_onboard_payload_port_local=$((14280+px4_instance))/udp_onboard_payload_port_local=$(($px4_start_port+40+px4_instance))/g' ${px4_conf_file_dir}/px4-rc.mavlink.template
