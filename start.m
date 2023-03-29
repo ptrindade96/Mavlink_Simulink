@@ -35,8 +35,12 @@ switch option
         Local_Port = 14540+(ID-1);
     case 2
         Remote_IP = input("IP address of the computer running the simulation: ");
+        if isstring(Remote_IP)
+            Remote_IP = convertStringsToChars(Remote_IP);
+        end
         ID = input("Drone ID: ");
-        Remote_Port = 14580+(ID-1);
+        UID = input("Server User ID: ");
+        Remote_Port = 25000+100*UID+20+(ID-1);
         Local_Port = 14540+(ID-1);
     case 3
         Remote_IP = ['192.168.1.',num2str(240+ID)];

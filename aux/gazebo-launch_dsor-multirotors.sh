@@ -7,9 +7,9 @@
 #./Tools/gazebo_sitl_multiple_run.sh -n 10 -m iris
 
 function cleanup() {
-	pkill -x px4
-	pkill gzclient
-	pkill gzserver
+	pkill -x -U $USER px4
+	pkill -U $USER gzclient
+	pkill -U $USER gzserver
 }
 
 function spawn_model() {
